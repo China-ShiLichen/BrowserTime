@@ -2,16 +2,24 @@
 <html lang="zh">
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Focus Companion</title>
-        <link rel="stylesheet" href="dashboard.css" />
+
+        <link rel="stylesheet" href="./dashboard.css" />
     </head>
 
     <body>
-        <div class="container">
-            <h1>详细统计</h1>
-            <div id="summary"></div>
-            <div id="list"></div>
-        </div>
-        <script type="module" src="dashboard.js"></script>
+        <main class="container">
+            <header class="header">
+                <h1>详细统计</h1>
+
+                <div id="summary">加载中...</div>
+            </header>
+
+            <section id="list"></section>
+            <section id="temporary"></section>
+        </main>
+
+        <script type="module" src="./dashboard.js"></script>
     </body>
 </html>

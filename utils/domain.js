@@ -1,7 +1,9 @@
-export function getDomain(url) {
+export function extractDomain(url) {
     try {
-        return new URL(url).hostname;
+        const host = new URL(url).hostname;
+
+        return host.replace(/^www\./, "");
     } catch {
-        return "unknown";
+        return "newtab";
     }
 }

@@ -74,5 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("clear-btn")?.addEventListener("click", clearAll);
 });
 document.getElementById("open-dashboard")?.addEventListener("click", () => {
-    chrome.tabs.create({ url: "../dashboard/dashboard.html" });
+    chrome.tabs.create({
+        url: chrome.runtime.getURL("dashboard/dashboard.html"),
+    });
 });

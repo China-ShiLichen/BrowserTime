@@ -1,31 +1,47 @@
-import { getDomain } from "../utils/domain.js";
+import { extractDomain } from "../utils/domain.js";
 import { saveTime } from "../storage/storage.js";
 
 let currentDomain = null;
-let startTime = null;
+let startTime = 0;
+let browserActive = true;
+
+async function flush() {
+    if (!currentDomain || !startTime) {
+        return;
+    }
+
+    const duration = Date.now() - startTime;
+
+    if (duration <= 1000) {
+        return;
+    }
+
+    await saveTime(currentDomain, duration);
+
+    startTime = Date.now();
+}
 
 async function record(tabId) {
     try {
         const tab = await chrome.tabs.get(tabId);
 
-        if (!tab?.url) {
+        if (!tab || !tab.url) {
             return;
         }
 
-        const now = Date.now();
-        const domain = getDomain(tab.url);
+        const domain = extractDomain(tab.url);
 
-        if (currentDomain && startTime) {
-            const duration = now - startTime;
-
-            await saveTime(currentDomain, duration);
+        if (browserActive) {
+            await flush();
         }
 
         currentDomain = domain;
-        startTime = now;
+
+        startTime = Date.now();
+
         console.log("Tracking:", domain);
-    } catch (err) {
-        console.error(err);
+    } catch (e) {
+        console.log("Skip:", e);
     }
 }
 
@@ -37,6 +53,30 @@ chrome.tabs.onUpdated.addListener((tabId, info) => {
     if (info.status === "complete") {
         record(tabId);
     }
+});
+
+setInterval(
+    () => {
+        if (browserActive) {
+            flush();
+        }
+    },
+
+    1000,
+);
+
+chrome.windows.onFocusChanged.addListener(async (id) => {
+    if (id === chrome.windows.WINDOW_ID_NONE) {
+        browserActive = false;
+
+        await flush();
+
+        return;
+    }
+
+    browserActive = true;
+
+    startTime = Date.now();
 });
 
 console.log("Worker Started");

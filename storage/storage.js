@@ -1,6 +1,5 @@
 export async function saveTime(domain, duration) {
     const today = new Date().toISOString().slice(0, 10);
-
     const result = await chrome.storage.local.get("data");
     const data = result.data || {};
 
@@ -17,7 +16,6 @@ export async function saveTime(domain, duration) {
 
 export async function getStats() {
     const today = new Date().toISOString().slice(0, 10);
-
     const result = await chrome.storage.local.get("data");
 
     return result.data?.[today] || {};
@@ -25,7 +23,6 @@ export async function getStats() {
 
 export async function clearStats() {
     const today = new Date().toISOString().slice(0, 10);
-
     const result = await chrome.storage.local.get("data");
     const data = result.data || {};
 
