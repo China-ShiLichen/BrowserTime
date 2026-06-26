@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    background: #eef4ff;
+    font-family: sans-serif;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 28px;
+    padding: 40px;
+}
+
+h1 {
+    color: #4d72ff;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 16px 0;
+
+    border-bottom: 1px solid #e8eefc;
+}
+
+.time {
+    color: #4d72ff;
+}

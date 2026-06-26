@@ -1,0 +1,18 @@
+{
+    "manifest_version": 3,
+    "name": "browsertime",
+    "version": "0.1.0",
+
+    "permissions": ["storage", "tabs"],
+
+    "host_permissions": ["<all_urls>"],
+
+    "background": {
+        "service_worker": "background/worker.js",
+        "type": "module"
+    },
+
+    "action": {
+        "default_popup": "popup/popup.html"
+    }
+}
