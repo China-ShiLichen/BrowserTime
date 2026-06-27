@@ -28,9 +28,8 @@ async function render() {
             ${formatTime(total)}
         `;
 
-        const normal = data.filter(([, ms]) => ms >= 30000);
-
-        const short = data.filter(([, ms]) => ms < 30000);
+        const normal = data.filter(([, ms]) => ms >= 1000);
+        const short = data.filter(([, ms]) => ms < 1000);
 
         normal.forEach(([domain, ms], index) => {
             const row = document.createElement("div");

@@ -1,0 +1,148 @@
+:root {
+    --bg: #ffffff;
+    --surface: #f8f9fb;
+    --text: #202124;
+    --sub: #5f6368;
+    --border: #e6e9ef;
+    --primary: #1a73e8;
+    --primary-hover: #155ec8;
+    --danger: #dadce0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--surface);
+
+    font-family:
+        "Segoe UI", "Microsoft YaHei", "PingFang SC", Roboto, Arial, sans-serif;
+
+    color: var(--text);
+}
+
+.card {
+    width: 100%;
+
+    background: var(--bg);
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    padding: 24px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.title {
+    font-size: 18px;
+
+    font-weight: 600;
+
+    margin-bottom: 10px;
+
+    letter-spacing: -0.02em;
+}
+
+.desc {
+    color: var(--sub);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    margin-bottom: 22px;
+}
+
+.actions {
+    display: flex;
+
+    gap: 10px;
+}
+
+button {
+    flex: 1;
+
+    height: 42px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition: 0.15s;
+}
+
+#yes {
+    background: var(--primary);
+
+    color: white;
+}
+
+#yes:hover {
+    background: var(--primary-hover);
+}
+
+#no {
+    background: white;
+
+    color: var(--text);
+
+    border: 1px solid var(--danger);
+}
+
+#no:hover {
+    background: #f6f7f9;
+}
+
+.timer {
+    margin-top: 16px;
+
+    font-size: 12px;
+
+    color: #80868b;
+
+    text-align: center;
+}
+.domain {
+    margin: 12px 0;
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    color: #1a73e8;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.count {
+    margin-bottom: 18px;
+
+    font-size: 13px;
+
+    color: #888;
+}
